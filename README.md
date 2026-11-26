@@ -47,4 +47,4 @@ Veja os [eventos com um consumidor](evidencias/ensaio-1.txt), os [eventos com do
 
 ## Uso de IA
 
-Usei o Codex para escrever e conferir o código, preparar as respostas e organizar a demonstração. A ferramenta também rodou os testes e conferiu nos logs quantas guias cada consumidor confirmou e quanto tempo o pedido inválido levou para voltar à fila.
+Usei o Codex para conferir o código e organizar a demonstração. A ferramenta também rodou os testes e conferiu nos logs quantas guias cada consumidor confirmou e quanto tempo o pedido inválido levou para voltar à fila.
