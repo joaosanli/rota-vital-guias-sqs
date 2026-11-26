@@ -38,12 +38,16 @@ Cada comando cria uma fila padrão exclusiva com visibilidade de 15 segundos, in
 
 | Ensaio | Envios | Guias confirmadas | Reentrega do inválido |
 |---|---:|---|---|
-| Um consumidor | 21 | 20 pelo PID 24200 | 15,011 s entre as tentativas 1 e 2 |
-| Dois consumidores | 21 | 10 pelo PID 14956 e 10 pelo PID 21404 | 15,020 s entre as tentativas 1 e 2 |
+| Um consumidor | 21 | 20 pelo PID 2196 | 15,026 s entre as tentativas 1 e 2 |
+| Dois consumidores | 21 | 10 pelo PID 31024 e 10 pelo PID 23760 | 15,036 s entre as tentativas 1 e 2 |
 
-No segundo ensaio, o PID 14956 confirmou as requisições ímpares e o PID 21404 confirmou as pares. As confirmações apareceram na ordem R-001 a R-020 nesta execução. A divisão pode mudar a cada rodada. O pedido inválido foi recebido primeiro pelo PID 14956 e depois pelo PID 21404, com o mesmo MessageId.
+No segundo ensaio, o PID 31024 confirmou as requisições ímpares e o PID 23760 confirmou as pares. As confirmações apareceram na ordem R-001 a R-020 nesta execução, mas isso não é garantido: no primeiro ensaio, com um único consumidor, a R-016 foi processada antes da R-015. A divisão pode mudar a cada rodada. O pedido inválido foi recebido duas vezes com o mesmo MessageId e a tentativa incrementada, primeiro pelo PID 31024 e depois pelo PID 23760.
 
-Veja os [eventos com um consumidor](evidencias/ensaio-1.txt), os [eventos com dois consumidores](evidencias/ensaio-2.txt) e as capturas do [primeiro](evidencias/ensaio-1.png) e do [segundo ensaio](evidencias/ensaio-2.png).
+Veja os [eventos com um consumidor](evidencias/ensaio-1.txt) e os [eventos com dois consumidores](evidencias/ensaio-2.txt), saídas reais de `python demo.py 1` e `python demo.py 2` contra o ElasticMQ 1.6.11, e as capturas do [primeiro](evidencias/ensaio-1.png) e do [segundo ensaio](evidencias/ensaio-2.png), tiradas da gravação de tela.
+
+## Vídeo
+
+A [gravação de tela](demonstracao.mp4) (1 min 11 s) captura a janela do terminal durante `python demo.py 1` e `python demo.py 2`: mostra o ElasticMQ no ar, a fila criada com visibility timeout de 15 s, os dois consumidores dividindo as guias e o pedido inválido voltando após o timeout. Os logs e as capturas desta pasta vêm dessa mesma execução.
 
 ## Uso de IA
 
